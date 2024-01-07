@@ -1,27 +1,27 @@
 <?php
-include "db_conn.php";
+include "connection.php";
 
 if (isset($_POST["submit"])) {
    $first_name = $_POST['first_name'];
    $last_name = $_POST['last_name'];
    $email = $_POST['email'];
+   $phone = $_POST['phone'];
    $gender = $_POST['gender'];
+   $created_at = date('Y-m-d H:i:s');
+   $updated_at = date('Y-m-d H:i:s');
 
-   $sql = "INSERT INTO `crud`(`id`, `first_name`, `last_name`, `email`, `gender`) VALUES (NULL,'$first_name','$last_name','$email','$gender')";
+   $sql = "INSERT INTO `crud`(`id`, `first_name`, `last_name`, `email`, `phone`, `gender`, `created_at`, `updated_at`) VALUES (NULL,'$first_name','$last_name','$email', '$phone', '$gender', '$created_at', '$updated_at')";
 
    $result = mysqli_query($conn, $sql);
 
    if ($result) {
-      header("Location: index.php?msg=New record created successfully");
+      header("Location: index.php?msg=New record created successfully.");
    } else {
       echo "Failed: " . mysqli_error($conn);
    }
 }
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,7 @@ if (isset($_POST["submit"])) {
 
 <body>
    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-      PHP Complete CRUD Application
+      <a href="index.php" class="text-decoration-none text-black">PHP Complete CRUD Application</a>
    </nav>
 
    <div class="container">
@@ -70,6 +70,11 @@ if (isset($_POST["submit"])) {
                <input type="email" class="form-control" name="email" placeholder="name@example.com">
             </div>
 
+            <div class="mb-3">
+               <label class="form-label">Phone:</label>
+               <input type="number" class="form-control" name="phone" placeholder="+91-9988776655">
+            </div>
+
             <div class="form-group mb-3">
                <label>Gender:</label>
                &nbsp;
@@ -87,6 +92,9 @@ if (isset($_POST["submit"])) {
          </form>
       </div>
    </div>
+
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
    <!-- Bootstrap -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

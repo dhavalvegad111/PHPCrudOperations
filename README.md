@@ -6,13 +6,16 @@ Create a table named *crud* inside your MySQL database using the following code
 
 ```sql
 CREATE TABLE `crud` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `gender` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-)
+  `phone` bigint(25) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 ```
 
 ### ****Copy files to htdocs folder****

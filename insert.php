@@ -7,10 +7,9 @@ if (isset($_POST["submit"])) {
    $email = $_POST['email'];
    $phone = $_POST['phone'];
    $gender = $_POST['gender'];
-   $created_at = date('Y-m-d H:i:s');
-   $updated_at = date('Y-m-d H:i:s');
 
-   $sql = "INSERT INTO `crud`(`id`, `first_name`, `last_name`, `email`, `phone`, `gender`, `created_at`, `updated_at`) VALUES (NULL,'$first_name','$last_name','$email', '$phone', '$gender', '$created_at', '$updated_at')";
+
+   $sql = "INSERT INTO `crud`(`id`, `first_name`, `last_name`, `email`, `phone`, `gender`) VALUES (NULL,'$first_name','$last_name','$email', '$phone', '$gender')";
 
    $result = mysqli_query($conn, $sql);
 

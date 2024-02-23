@@ -15,9 +15,10 @@ if (isset($_POST["submit"])) {
    $result = mysqli_query($conn, $sql);
 
    if ($result) {
-      header("Location: index.php?msg=New record created successfully.");
+      header("Location: index.php");
+      $msg = "New record created successfully.";
    } else {
-      echo "Failed: " . mysqli_error($conn);
+      $msg = "Failed to create a record: " . mysqli_error($conn);
    }
 }
 

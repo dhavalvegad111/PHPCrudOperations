@@ -13,9 +13,10 @@ if (isset($_POST["submit"])) {
   $sql = "UPDATE `crud` SET `first_name`='$first_name',`last_name`='$last_name',`email`='$email',`phone`='$phone',`gender`='$gender', `updated_at`='$updated_at' WHERE id = $id";
   $result = mysqli_query($conn, $sql);
   if ($result) {
-    header("Location: index.php?msg=Data updated successfully.");
+    header("Location: index.php");
+    $msg = "Data updated successfully.";
   } else {
-    echo "Failed: " . mysqli_error($conn);
+    $msg = "Failed to update data: " . mysqli_error($conn);
   }
 }
 ?>
